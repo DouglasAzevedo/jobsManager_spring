@@ -16,10 +16,9 @@ public class ListCompanyUseCase {
     private CompanyRepository companyRepository;
 
     public List<CompanyDto> execute() {
-
         var companies = companyRepository.findAll();
-
-        return companies.stream().map(CompanyBuilder::toCompanyDto).collect(Collectors.toList());
+        return companies.stream()
+                .map(CompanyBuilder::toCompanyDto)
+                .collect(Collectors.toList());
     }
-
 }

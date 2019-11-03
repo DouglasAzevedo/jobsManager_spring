@@ -13,5 +13,4 @@ public class CompanyDto {
 
     private String industry;
 
-
 }

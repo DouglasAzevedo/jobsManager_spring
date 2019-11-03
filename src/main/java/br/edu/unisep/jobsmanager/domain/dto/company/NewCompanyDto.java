@@ -7,6 +7,5 @@ public class NewCompanyDto {
 
     private String name;
 
-    private  Integer industryId;
-
+    private Integer industryId;
 }

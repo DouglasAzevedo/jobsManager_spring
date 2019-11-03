@@ -1,13 +1,12 @@
 package br.edu.unisep.jobsmanager.controller.job;
 
 import br.edu.unisep.jobsmanager.domain.dto.job.JobDto;
+import br.edu.unisep.jobsmanager.domain.dto.job.NewJobDto;
 import br.edu.unisep.jobsmanager.domain.usecase.job.ListAvailableJobsUseCase;
 import br.edu.unisep.jobsmanager.domain.usecase.job.ListByIndustryUseCase;
+import br.edu.unisep.jobsmanager.domain.usecase.job.NewJobUseCase;
 import lombok.AllArgsConstructor;
-import org.springframework.web.bind.annotation.GetMapping;
-import org.springframework.web.bind.annotation.PathVariable;
-import org.springframework.web.bind.annotation.RequestMapping;
-import org.springframework.web.bind.annotation.RestController;
+import org.springframework.web.bind.annotation.*;
 
 import java.util.List;
 
@@ -18,6 +17,7 @@ public class JobController {
 
     private ListAvailableJobsUseCase listAvailableJobsUseCase;
     private ListByIndustryUseCase listByIndustryUseCase;
+    private NewJobUseCase newJobUseCase;
 
     @GetMapping
     public List<JobDto> listAvailable() {
@@ -28,4 +28,10 @@ public class JobController {
     public List<JobDto> listByIndustry(@PathVariable("industry") Integer industry) {
         return listByIndustryUseCase.execute(industry);
     }
+
+    @PostMapping
+    public void save(@RequestBody NewJobDto newJob) {
+        newJobUseCase.execute(newJob);
+    }
+
 }

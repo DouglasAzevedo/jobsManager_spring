@@ -16,8 +16,8 @@ public class CompanyBuilder {
     }
 
     public static Company fromNewCompanyDto(NewCompanyDto newCompany) {
-
-        var industry = Industry.builder().id(newCompany.getIndustryId()).build();
+        var industry = Industry.builder()
+                .id(newCompany.getIndustryId()).build();
 
         return Company.builder()
                 .name(newCompany.getName())
